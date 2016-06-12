@@ -28,8 +28,14 @@ namespace apka
         private int _directionY = 0;
         private DispatcherTimer _timer;
         private MainCharacterElements _prize;
+        private List<Objects> _walls;
         private int _partsToAdd;
 
+
+       enum time {
+            mili =100,
+
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -37,16 +43,17 @@ namespace apka
             InitCharacter();
             InitTimer();
             InitPrize();
+            InitWall();
         }
         void InitBoard()
         {
-            for (int i = 0; i < grid.Width / SIZE; i++)
+            for (int i = 0; i < grid.Width/SIZE; i++)
             {
                 ColumnDefinition columnDefinition = new ColumnDefinition();
                 columnDefinition.Width = new GridLength(SIZE);
                 grid.ColumnDefinitions.Add(columnDefinition);
             }
-            for (int j = 0; j < grid.Height / SIZE; j++)
+            for (int j = 0; j < grid.Height/SIZE; j++)
             {
                 RowDefinition rowDefinition = new RowDefinition();
                 rowDefinition.Height = new GridLength(SIZE);
@@ -89,7 +96,8 @@ namespace apka
             _maincharacter.Top.Y += _directionY;
             _maincharacter.RedrawCharacter();
 
-            if (CheckCollision()) EndGame();
+
+            if (CheckCollision()) throw new Exception("game over");
             else
             {
                 if (CheckPrize())
@@ -101,13 +109,22 @@ namespace apka
         {
             _timer = new DispatcherTimer();
             _timer.Tick += new EventHandler(_timer_Tick);
-            _timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            _timer.Interval = new TimeSpan(0, 0, 0, 0,(int)time.mili);
             _timer.Start();
         }
 
         void _timer_Tick(object sender, EventArgs e)
         {
-            MoveCharacter();
+            try
+            {
+                MoveCharacter();
+                if (CheckPrize()) RedrawPrize();
+                _maincharacter.RedrawCharacter();
+            }
+            catch (Exception ex)
+            {
+                EndGame(); // koniec gry, przegrana
+            }
         }
         private void WinKeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Left) {
@@ -131,7 +148,18 @@ namespace apka
             }
 
         }
-        void InitPrize()
+        void InitWall()
+        {
+            _walls = new List<Objects>();
+            Objects wall1 = new Objects(10, 5, 30, 10);
+            grid.Children.Add(wall1.Rect);
+            Grid.SetColumn(wall1.Rect, wall1.X);
+            Grid.SetRow(wall1.Rect, wall1.Y);
+            Grid.SetColumnSpan(wall1.Rect, wall1.Width);
+            Grid.SetRowSpan(wall1.Rect, wall1.Height);
+            _walls.Add(wall1);
+        }
+            void InitPrize()
         {
             _prize = new MainCharacterElements(10, 10);
             _prize.Elli.Width = _prize.Elli.Height = 5;
@@ -143,7 +171,7 @@ namespace apka
         private bool CheckPrize()
         {
             Random rand = new Random();
-            if (_maincharacter.Top.X == _prize.X && _maincharacter.Top.Y == _prize.Y)
+            if (_maincharacter.Top.CheckCollision(_prize))
             {
                 _partsToAdd += 1;
                 for (int i = 0; i < 20; i++)
@@ -199,6 +227,8 @@ namespace apka
         {
             if (CheckBoardCollision())
                 return true;
+            if (CheckWallCollision())
+                return true;
             if (CheckItselfCollision())
                 return true;
             return false;
@@ -210,6 +240,16 @@ namespace apka
                 return true;
             if (_maincharacter.Top.Y < 0 || _maincharacter.Top.Y > grid.Height / SIZE)
                 return true;
+            return false;
+        }
+        bool CheckWallCollision()
+        {
+            foreach (Objects wall in _walls)
+            {
+                if (_maincharacter.Top.X >= wall.X && _maincharacter.Top.X < wall.X + wall.Width &&
+                _maincharacter.Top.Y >= wall.Y && _maincharacter.Top.Y < wall.Y + wall.Height)
+                    return true;
+            }
             return false;
         }
 

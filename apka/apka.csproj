@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ICollision.cs" />
     <Compile Include="MainCharacter.cs" />
     <Compile Include="MainCharacterElements.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -71,6 +72,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

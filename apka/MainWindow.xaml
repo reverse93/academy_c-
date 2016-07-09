@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:apka"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="650">
+        Title="MainWindow" Height="680" Width="724">
 
     <Grid>
-        <Rectangle Height=" 630" Width="630" Stroke="PaleGreen"/>
-        <Grid Name="grid" Height="630" Width="630"/>
+        <Rectangle Width="600" Stroke="PaleGreen" Height ="600 "/>
+        <Grid Name="grid1" Margin="0,0,10,10">
+            <Label x:Name="label" Content="Score" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+            <Label x:Name="label1" Content=" 0 " HorizontalAlignment="Left" Margin="113,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.316,-0.269"/>
+        </Grid>
+
+        <Grid Name="grid" Width="600" Height="600" />
     </Grid>
 </Window>

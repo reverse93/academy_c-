@@ -22,6 +22,7 @@ namespace apka
 
     public partial class MainWindow : Window
     {
+        int points = 0;
         private static readonly int SIZE = 20;
         private MainCharacter _maincharacter;
         private int _directionX = 1;
@@ -97,13 +98,15 @@ namespace apka
             _maincharacter.RedrawCharacter();
 
 
-            if (CheckCollision()) throw new Exception("game over");
-            else
-            {
+                if (CheckCollision()) throw new Exception("game over");
+               else
+             { 
                 if (CheckPrize())
+                    {
                     RedrawPrize();
-                _maincharacter.RedrawCharacter();
-            }
+                    }
+                    _maincharacter.RedrawCharacter();
+                }
         }
         void InitTimer()
         {
@@ -151,7 +154,7 @@ namespace apka
         void InitWall()
         {
             _walls = new List<Objects>();
-            Objects wall1 = new Objects(10, 5, 30, 10);
+            Objects wall1 = new Objects(19, 15, 3, 30);
             grid.Children.Add(wall1.Rect);
             Grid.SetColumn(wall1.Rect, wall1.X);
             Grid.SetRow(wall1.Rect, wall1.Y);
@@ -219,6 +222,8 @@ namespace apka
         }
         private void RedrawPrize()
         {
+            points++;
+            label1.Content = points;
             Grid.SetColumn(_prize.Elli, _prize.X);
             Grid.SetRow(_prize.Elli, _prize.Y);
 
@@ -246,8 +251,8 @@ namespace apka
         {
             foreach (Objects wall in _walls)
             {
-                if (_maincharacter.Top.X >= wall.X && _maincharacter.Top.X < wall.X + wall.Width &&
-                _maincharacter.Top.Y >= wall.Y && _maincharacter.Top.Y < wall.Y + wall.Height)
+                if (_maincharacter.Top.X >= wall.X && _maincharacter.Top.X < wall.Width +wall.X &&
+                _maincharacter.Top.Y >= wall.Y && _maincharacter.Top.Y < wall.Height + wall.Y)
                     return true;
             }
             return false;

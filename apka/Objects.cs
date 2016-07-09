@@ -23,7 +23,7 @@ namespace apka
             Width = width;
             Height = height;
             Rect = new Rectangle();
-            Rect.Width = 10* Width;
+            Rect.Width = 10*Width;
             Rect.Height = 10* Height;
             Rect.Fill = Brushes.Yellow;
         }

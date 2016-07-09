@@ -33,7 +33,7 @@ namespace apka
             Rect = new Rectangle();
             Elli = new Ellipse();
            /// Elli.Width = Elli.Height = 5; 
-            Rect.Width = Rect.Height = 15;
+            Rect.Width = Rect.Height = 9;
             Rect.Fill = Brushes.Gold;
 
         }

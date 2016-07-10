@@ -14,7 +14,7 @@ namespace apka
 
         public MainCharacter() {
             Top = new MainCharacterElements(20, 4);
-            Top.Rect.Width = Top.Rect.Height = 10;
+            Top.Rect.Width = Top.Rect.Height = 20;
             Top.Rect.Fill = System.Windows.Media.Brushes.Pink;
             Elements = new List<MainCharacterElements>();
             Elements.Add(new MainCharacterElements(19, 4));

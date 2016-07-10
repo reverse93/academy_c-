@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Direction.cs" />
     <Compile Include="ICollision.cs" />
     <Compile Include="MainCharacter.cs" />
     <Compile Include="MainCharacterElements.cs" />

@@ -23,7 +23,7 @@ namespace apka
     public partial class MainWindow : Window
     {
         int points = 0;
-        private static readonly int SIZE = 20;
+        private static readonly int SIZE = 10;
         private MainCharacter _maincharacter;
         private int _directionX = 1;
         private int _directionY = 0;
@@ -34,9 +34,13 @@ namespace apka
 
 
        enum time {
-            mili =100,
+            mili =250,
 
         }
+
+
+       
+
         public MainWindow()
         {
             InitializeComponent();
@@ -45,7 +49,9 @@ namespace apka
             InitTimer();
             InitPrize();
             InitWall();
+            Direction.direction = Direction.Direct.Right;
         }
+
         void InitBoard()
         {
             for (int i = 0; i < grid.Width/SIZE; i++)
@@ -75,6 +81,7 @@ namespace apka
 
         private void MoveCharacter()
         {
+            
             int mainCharacterPart = _maincharacter.Elements.Count;
             if (_partsToAdd > 0)
             {
@@ -103,6 +110,8 @@ namespace apka
              { 
                 if (CheckPrize())
                     {
+                    points++;
+                    label1.Content = points;
                     RedrawPrize();
                     }
                     _maincharacter.RedrawCharacter();
@@ -130,29 +139,35 @@ namespace apka
             }
         }
         private void WinKeyDown(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Left) {
+            if (e.Key == Key.Left && Direction.direction != Direction.Direct.Right )
+            {
                 _directionX = -1;
-                _directionY = 0; 
+                _directionY = 0;
+                Direction.direction = Direction.Direct.Left;
             }
-            if (e.Key == Key.Right)
+            if (e.Key == Key.Right && Direction.direction != Direction.Direct.Left)
             {
                 _directionX = 1;
                 _directionY = 0;
+                Direction.direction = Direction.Direct.Right;
             }
-            if (e.Key == Key.Up)
+            if (e.Key == Key.Up && Direction.direction != Direction.Direct.Down)
             {
                 _directionX = 0;
                 _directionY = -1;
+                Direction.direction = Direction.Direct.Up;
             }
-            if (e.Key == Key.Down)
+            if (e.Key == Key.Down && Direction.direction != Direction.Direct.Up)
             {
                 _directionX = 0;
                 _directionY = 1;
+                Direction.direction = Direction.Direct.Down;
             }
 
         }
         void InitWall()
         {
+            
             _walls = new List<Objects>();
             Objects wall1 = new Objects(19, 15, 3, 30);
             grid.Children.Add(wall1.Rect);
@@ -218,15 +233,45 @@ namespace apka
         void EndGame()
         {
             _timer.Stop();
-            MessageBox.Show("KONIEC GRY");
+            MessageBoxResult result = MessageBox.Show("Koniec gry, twój wynik to "
+                + points + "\nCzy chcesz zagrać ponownie?", 
+                    "Koniec gry", MessageBoxButton.YesNo);
+
+            //sprawdzamy co zostało kliknięte
+            if (result == MessageBoxResult.Yes)
+            {
+                //trzeba zresetować grę
+                Reset();
+            }
+            else if (result == MessageBoxResult.No)
+            {
+                //nie chcemy grać - wychodzimy.
+                System.Environment.Exit(0);
+            }
         }
+        public void Reset()
+        {
+            points = 0;
+            label1.Content = points;
+            _directionX = 1;
+            _directionY = 0;
+
+            grid.Children.Clear();
+
+            InitializeComponent();
+            InitBoard();
+            InitCharacter();
+            InitTimer();
+            InitPrize();
+            InitWall();
+        }
+
         private void RedrawPrize()
         {
-            points++;
-            label1.Content = points;
+
             Grid.SetColumn(_prize.Elli, _prize.X);
             Grid.SetRow(_prize.Elli, _prize.Y);
-
+            
         }
         bool CheckCollision()
         {

@@ -23,6 +23,7 @@ namespace apka
     public partial class MainWindow : Window
     {
         int points = 0;
+        int temp = 0;
         private static readonly int SIZE = 10;
         private MainCharacter _maincharacter;
         private int _directionX = 1;
@@ -311,6 +312,23 @@ namespace apka
                     return true;
             }
             return false;
+        }
+
+        private void btnPause_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if(temp == 0)
+            {
+                _timer.Stop();
+                btnPause.Content = "Play";
+                temp = 1; 
+            }
+            else
+            {
+                _timer.Start();
+                btnPause.Content = "Pause";
+                temp = 0; 
+            }
         }
     }
 }

@@ -8,12 +8,13 @@
         Title="MainWindow" Height="680" Width="724">
 
     <Grid>
-        <Rectangle Width="600" Stroke="PaleGreen" Height ="600 "/>
+        <Rectangle Width="600" Stroke="PaleGreen" Height ="550 "/>
         <Grid Name="grid1" Margin="0,0,10,10">
             <Label x:Name="label" Content="Score" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
             <Label x:Name="label1" Content=" 0 " HorizontalAlignment="Left" Margin="113,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.316,-0.269"/>
+            <Button x:Name="btnPause" Content="Pause" HorizontalAlignment="Left" Margin="191,10,0,0" VerticalAlignment="Top" Width="75" Click="btnPause_Click"/>
         </Grid>
 
-        <Grid Name="grid" Width="600" Height="600" />
+        <Grid Name="grid" Width="600" Height="550" />
     </Grid>
 </Window>

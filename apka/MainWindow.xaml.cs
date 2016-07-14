@@ -28,6 +28,7 @@ namespace apka
         {
             MainWindow1 main = new MainWindow1();
             main.Show();
+            this.Close();
         }
     }
 }

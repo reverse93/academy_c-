@@ -238,16 +238,17 @@ namespace apka
                 + points + "\nCzy chcesz zagrać ponownie?", 
                     "Koniec gry", MessageBoxButton.YesNo);
 
-            //sprawdzamy co zostało kliknięte
+
             if (result == MessageBoxResult.Yes)
             {
-                //trzeba zresetować grę
                 Reset();
             }
             else if (result == MessageBoxResult.No)
             {
-                //nie chcemy grać - wychodzimy.
-                System.Environment.Exit(0);
+                //System.Environment.Exit(0);
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
             }
         }
         public void Reset()

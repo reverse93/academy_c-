@@ -19,6 +19,12 @@ namespace apka
     /// </summary>
     public partial class MainWindow : Window
     {
+        enum lvl
+        {
+            easy = 250,
+            medium = 500,
+            hard = 1000,
+        };
         public MainWindow()
         {
             InitializeComponent();
@@ -29,6 +35,11 @@ namespace apka
             MainWindow1 main = new MainWindow1();
             main.Show();
             this.Close();
+        }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

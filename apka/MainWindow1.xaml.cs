@@ -140,7 +140,7 @@ namespace apka
             }
         }
         private void WinKeyDown(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Left && Direction.direction != Direction.Direct.Right )
+            if (e.Key == Key.Left && Direction.direction != Direction.Direct.Right)
             {
                 _directionX = -1;
                 _directionY = 0;
@@ -164,7 +164,10 @@ namespace apka
                 _directionY = 1;
                 Direction.direction = Direction.Direct.Down;
             }
-
+            if (e.Key == Key.Escape)
+            {
+                ShowPrevWin();
+            }
         }
         void InitWall()
         {
@@ -245,11 +248,15 @@ namespace apka
             }
             else if (result == MessageBoxResult.No)
             {
-                //System.Environment.Exit(0);
-                MainWindow main = new MainWindow();
-                main.Show();
-                this.Close();
+                ShowPrevWin();
             }
+        }
+
+        public void ShowPrevWin()
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
         }
         public void Reset()
         {
@@ -257,6 +264,7 @@ namespace apka
             label1.Content = points;
             _directionX = 1;
             _directionY = 0;
+            Direction.direction = Direction.Direct.Right;
 
             grid.Children.Clear();
 

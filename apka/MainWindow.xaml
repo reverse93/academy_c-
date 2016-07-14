@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Title="Menu" Height="300" Width="300">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="82,46,0,0" VerticalAlignment="Top" Width="123" Click="button_Click"/>
+        <Button x:Name="button" Content="Start" HorizontalAlignment="Left" Margin="82,46,0,0" VerticalAlignment="Top" Width="123" Click="button_Click"/>
+        <CheckBox x:Name="checkBox" Content="Łatwy" HorizontalAlignment="Left" Margin="82,90,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+        <CheckBox x:Name="checkBox_Copy" Content="Średni" HorizontalAlignment="Left" Margin="82,121,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+        <CheckBox x:Name="checkBox_Copy1" Content="Trudny" HorizontalAlignment="Left" Margin="82,150,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
 
     </Grid>
 </Window>

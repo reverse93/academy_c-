@@ -20,10 +20,12 @@ namespace apka
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 
+
     public partial class MainWindow1 : Window
     {
         int points = 0;
         int temp = 0;
+        int controlTime;
         private static readonly int SIZE = 10;
         private MainCharacter _maincharacter;
         private int _directionX = 1;
@@ -33,13 +35,19 @@ namespace apka
         private List<Objects> _walls;
         private int _partsToAdd;
 
+        //public delegate void SpeedOfMainCharacterHandler(int timer);
+        //public event SpeedOfMainCharacterHandler SpeedOfMainCharacter;
 
-       enum time {
+/*        enum time {
             mili =250,
 
         }
+*/
+        public MainWindow1(int timer) : this()
+        {
 
-
+            controlTime = timer;
+        }
        
 
         public MainWindow1()
@@ -122,7 +130,7 @@ namespace apka
         {
             _timer = new DispatcherTimer();
             _timer.Tick += new EventHandler(_timer_Tick);
-            _timer.Interval = new TimeSpan(0, 0, 0, 0,(int)time.mili);
+            _timer.Interval = new TimeSpan(0, 0, 0, 0,(int)controlTime);
             _timer.Start();
         }
 

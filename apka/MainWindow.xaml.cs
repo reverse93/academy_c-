@@ -19,26 +19,36 @@ namespace apka
     /// </summary>
     public partial class MainWindow : Window
     {
-        enum lvl
-        {
-            easy = 250,
-            medium = 500,
-            hard = 1000,
-        };
+        int k;
         public MainWindow()
         {
             InitializeComponent();
+            InitLevelOfSpeed();
+        }
+        
+        private int InitLevelOfSpeed()
+        {
+            k = 100; 
+            k = (int)slider.Value;
+            return k;
+            //return k;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow1 main = new MainWindow1();
+            MainWindow1 main = new MainWindow1((int)slider.Value);
+            //GameSpeed game = new MainWindow1.GameSpeed();
+            //main.SpeedOfMainCharacter += TheSlider_ValueChanged;
             main.Show();
             this.Close();
         }
-
-        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        public void TheSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+
+
+   //         k = (int)slider.Value;
+
+            System.Diagnostics.Debug.WriteLine(k);
 
         }
     }

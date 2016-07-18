@@ -31,7 +31,7 @@ namespace apka
            // InitLevelOfSpeed();
         }
 
-        public MainWindow main; 
+        public MainWindow1 main; 
        /* public void InitLevelOfSpeed()
         {
             int controlSpeed;
@@ -43,9 +43,9 @@ namespace apka
         {
             //int someData;
             //someData = InitLevelOfSpeed();
-            MainWindow1 main = new MainWindow1(k);
-            
-            main.Owner = this;
+            //   MainWindow1 main = new MainWindow1(k);
+            main = new MainWindow1();
+           /// main.Owner = this;
            
             main.Show();
             this.Close();
@@ -55,7 +55,7 @@ namespace apka
 
 
             k = (int)slider.Value;
-
+            if (main != null) main.SetSpeed((int)slider.Value);
             System.Diagnostics.Debug.WriteLine(k);
 
         }

@@ -53,7 +53,7 @@ namespace apka
             Direction.direction = Direction.Direct.Right;
         }
 
-        public MainWindow1(int controlSpeed) : this()
+        public void SetSpeed(int controlSpeed)
         {
             controlTime = controlSpeed;
         }

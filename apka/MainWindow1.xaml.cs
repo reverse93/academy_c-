@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,15 +36,8 @@ namespace apka
         private List<Objects> _walls;
         private int _partsToAdd;
 
-        //public delegate void SpeedOfMainCharacterHandler(int timer);
-        //public event SpeedOfMainCharacterHandler SpeedOfMainCharacter;
-
-        /*        enum time {
-                    mili =250,
-
-                }
-        */
-        public MainWindow1() {
+        public MainWindow1()
+        {
             InitializeComponent();
             InitBoard();
             InitCharacter();
@@ -56,6 +50,7 @@ namespace apka
         public void SetSpeed(int controlSpeed)
         {
             controlTime = controlSpeed;
+            _timer.Interval = new TimeSpan(0, 0, 0, 0, controlTime);
         }
 
         void InitBoard()
@@ -125,9 +120,10 @@ namespace apka
         }
         void InitTimer()
         {
+           
             _timer = new DispatcherTimer();
             _timer.Tick += new EventHandler(_timer_Tick);
-            _timer.Interval = new TimeSpan(0, 0, 0, 0,(int)controlTime);
+ 
             _timer.Start();
         }
 

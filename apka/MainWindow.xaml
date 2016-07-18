@@ -8,7 +8,7 @@
         Title="Menu" Height="300" Width="300">
     <Grid>
         <Button x:Name="button" Content="Start" HorizontalAlignment="Left" Margin="82,46,0,0" VerticalAlignment="Top" Width="123" Click="button_Click"/>
-        <Slider x:Name="slider" HorizontalAlignment="Left" Margin="34,101,0,0" VerticalAlignment="Top" Width="203"  Maximum="1200"  TickFrequency="400" IsSnapToTickEnabled="True" ValueChanged="TheSlider_ValueChanged"/>
+        <Slider x:Name="slider" HorizontalAlignment="Left" Margin="34,101,0,0" VerticalAlignment="Top" Width="203"  Maximum="1200" Minimum ="100"  TickFrequency="400" IsSnapToTickEnabled="True" ValueChanged="TheSlider_ValueChanged"/>
 
     </Grid>
 </Window>

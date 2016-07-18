@@ -28,16 +28,9 @@ namespace apka
         public MainWindow()
         {
             InitializeComponent();
-           // InitLevelOfSpeed();
         }
 
         public MainWindow1 main; 
-       /* public void InitLevelOfSpeed()
-        {
-            int controlSpeed;
-            controlSpeed = k;
-            
-        }*/
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -45,6 +38,7 @@ namespace apka
             //someData = InitLevelOfSpeed();
             //   MainWindow1 main = new MainWindow1(k);
             main = new MainWindow1();
+            main.SetSpeed(k);
            /// main.Owner = this;
            
             main.Show();
@@ -52,7 +46,6 @@ namespace apka
         }
         public void TheSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
 
             k = (int)slider.Value;
             if (main != null) main.SetSpeed((int)slider.Value);

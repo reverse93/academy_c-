@@ -38,20 +38,12 @@ namespace apka
         //public delegate void SpeedOfMainCharacterHandler(int timer);
         //public event SpeedOfMainCharacterHandler SpeedOfMainCharacter;
 
-/*        enum time {
-            mili =250,
+        /*        enum time {
+                    mili =250,
 
-        }
-*/
-        public MainWindow1(int timer) : this()
-        {
-
-            controlTime = timer;
-        }
-       
-
-        public MainWindow1()
-        {
+                }
+        */
+        public MainWindow1() {
             InitializeComponent();
             InitBoard();
             InitCharacter();
@@ -59,6 +51,11 @@ namespace apka
             InitPrize();
             InitWall();
             Direction.direction = Direction.Direct.Right;
+        }
+
+        public MainWindow1(int controlSpeed) : this()
+        {
+            controlTime = controlSpeed;
         }
 
         void InitBoard()

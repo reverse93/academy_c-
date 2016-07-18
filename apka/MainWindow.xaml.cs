@@ -14,31 +14,39 @@ using System.Windows.Shapes;
 
 namespace apka
 {
+
+    
     /// <summary>
     /// Interaction logic for Menu.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        //public delegate int ControlSpeedrHandler(int controlSpeed);
+        //public event ControlSpeedrHandler ControlSpeedChanged;
         int k;
+        //  int k;
         public MainWindow()
         {
             InitializeComponent();
-            InitLevelOfSpeed();
+           // InitLevelOfSpeed();
         }
-        
-        private int InitLevelOfSpeed()
+
+        public MainWindow main; 
+       /* public void InitLevelOfSpeed()
         {
-            k = 100; 
-            k = (int)slider.Value;
-            return k;
-            //return k;
-        }
+            int controlSpeed;
+            controlSpeed = k;
+            
+        }*/
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow1 main = new MainWindow1((int)slider.Value);
-            //GameSpeed game = new MainWindow1.GameSpeed();
-            //main.SpeedOfMainCharacter += TheSlider_ValueChanged;
+            //int someData;
+            //someData = InitLevelOfSpeed();
+            MainWindow1 main = new MainWindow1(k);
+            
+            main.Owner = this;
+           
             main.Show();
             this.Close();
         }
@@ -46,7 +54,7 @@ namespace apka
         {
 
 
-   //         k = (int)slider.Value;
+            k = (int)slider.Value;
 
             System.Diagnostics.Debug.WriteLine(k);
 

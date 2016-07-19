@@ -123,7 +123,7 @@ namespace apka
            
             _timer = new DispatcherTimer();
             _timer.Tick += new EventHandler(_timer_Tick);
- 
+            _timer.Interval = new TimeSpan(0, 0, 0, 0, controlTime);
             _timer.Start();
         }
 

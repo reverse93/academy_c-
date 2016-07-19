@@ -48,14 +48,24 @@ namespace apka
         {
 
             k = (int)slider.Value;
-
-            if(k == 100)
+            if (label1 != null)
             {
-                label1.Content="trudny";
-            }
-            if (k == 1200)
-            {
-                label1.Content = "bardzo prosty";
+                if (k == 100)
+                {
+                    label1.Content = "trudny";
+                }
+                if(k == 500)
+                {
+                    label1.Content = "średni";
+                }
+                if (k == 900)
+                {
+                    label1.Content = " łatwy"; 
+                }
+                if (k == 1200)
+                {
+                    label1.Content = "bardzo prosty";
+                }
             }
             if (main != null) main.SetSpeed((int)slider.Value);
             System.Diagnostics.Debug.WriteLine(k);

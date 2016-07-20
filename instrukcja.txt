@@ -1,0 +1,8 @@
+----Opis mojej aplikacji---- 
+Moja aplikacja przedstawia dobrze znan¹ wszystkim grê w snake'a. 
+W momencie uruchomienia apki mamy startowe okno, w którym za pomoc¹ suwaka mo¿na ustawiæ poziom trudnoœci,a za 
+pomoc¹ buttona uruchamiamy grê. W momencie uruchomienia tworzy siê drugie okienko w którym pokazan¹ mamy planszê po której
+poruszamy siê wê¿em. W trakcie zbierania jedzonka dodaj¹ siê punkty wygranej. Je¿eli zderzymy siê ze œcian¹, krañcem planszy
+b¹dŸ te¿ spróbujemy "zjeœæ" samego siebie pojawia siê okienko o uzyskanych punktach i mo¿liwoœci restartu gry. 
+Dodatkowo mo¿na zastopowaæ grê za pomoc¹ pauzy. Jest tak¿e wprowadzona obs³uga klawisza Escape, która sprawia ¿e plansza 
+zostanie wy³¹czona i przeniesiemy siê do okienka startowego, w którym na nowo mo¿na ustawiæ prêdkoœæ. 
